@@ -10,6 +10,8 @@ namespace BinarySearchTree
     {
         static void Main(string[] args)
         {
+            BinarySearchTree redCedar = new BinarySearchTree();
+            redCedar.SearchTree();
         }
     }
 }
