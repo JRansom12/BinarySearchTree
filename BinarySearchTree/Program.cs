@@ -12,8 +12,6 @@ namespace BinarySearchTree
         {
             BinarySearchTree redCedar = new BinarySearchTree();
             redCedar.Add(50);
-            redCedar.Add(40);
-            redCedar.Add(45);
             redCedar.Search(50);
         }
     }

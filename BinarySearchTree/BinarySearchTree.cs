@@ -52,19 +52,28 @@ namespace BinarySearchTree
                 }
             }
         }
-        public Node Search(Node root, int input)
+        public void Search(int input)
         {
-            if (root == null)
+            SearchTree(root, input);
+        }
+        public Node SearchTree(Node root, int input)
+        {
+            while (true)
             {
-                return null;
-            }
-            if (root.data == input)
-            {
-                return root;
-            }
-            else
-            {
-                return (root.data > input) ? Search(root.leftChild, input) : Search(root.rightChild, input);
+                if (root == null)
+                {
+                    Console.WriteLine("This value does not exist in this tree.");
+                    return null;
+                }
+                else if (input == root.data)
+                {
+                    Console.WriteLine("This value does exist in this tree.");
+                    return root;
+                }
+                else
+                {
+                    return (root.data > input) ? SearchTree(root.leftChild, input) : SearchTree(root.rightChild, input);
+                }
             }
         }       
     }
