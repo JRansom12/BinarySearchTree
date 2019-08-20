@@ -15,7 +15,6 @@ namespace BinarySearchTree
             redCedar.Add(40);
             redCedar.Add(45);
             redCedar.Search(50);
-
         }
     }
 }

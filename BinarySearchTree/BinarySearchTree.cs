@@ -18,39 +18,54 @@ namespace BinarySearchTree
         }
 
         // member methods
-        public Node Insert(Node root, int input)
-        {
-            if(root == null)
-            {
-                root = new Node();
-                root.data = input;
-                return root;
-            }
-            if(input <= root.data)
-            {
-
-                root.leftChild = Insert(root.leftChild, input);
-            }
-            else
-            {
-                root.rightChild = Insert(root.rightChild, input);
-            }
-            return root;
-        }
         public void Add(int input)
         {
-            root = Insert(root, input);
-        }
-        public void Search(int input)
-        {
-            if(input == root.data)
+            Node newNode = new Node();
+            newNode.data = input;
+            if (root == null)
+                root = newNode;
+            else
             {
-                Console.WriteLine("Found search result: " + root.data);
+                Node current = root;
+                Node parent;
+                while (true)
+                {
+                    parent = current;
+                    if (input < current.data)
+                    {
+                        current = current.leftChild;
+                        if (current == null)
+                        {
+                            parent.leftChild = newNode;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        current = current.rightChild;
+                        if (current == null)
+                        {
+                            parent.rightChild = newNode;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        public Node Search(Node root, int input)
+        {
+            if (root == null)
+            {
+                return null;
+            }
+            if (root.data == input)
+            {
+                return root;
             }
             else
             {
-                Console.WriteLine("That input does not exist in this tree.");
+                return (root.data > input) ? Search(root.leftChild, input) : Search(root.rightChild, input);
             }
-        }        
+        }       
     }
 }
