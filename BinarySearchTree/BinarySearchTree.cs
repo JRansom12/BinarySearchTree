@@ -9,24 +9,48 @@ namespace BinarySearchTree
     class BinarySearchTree
     {
         // member variables
-        Node start;
+        public Node root;
 
         // constructor
+        public BinarySearchTree()
+        {
+            root = null;           
+        }
 
         // member methods
-        public void Add(int data)
+        public Node Insert(Node root, int input)
         {
-            Node root = new Node();
-            if(start == null)
+            if(root == null)
             {
-                start = root;
-                return;
+                root = new Node();
+                root.data = input;
+                return root;
             }
+            if(input <= root.data)
+            {
+
+                root.leftChild = Insert(root.leftChild, input);
+            }
+            else
+            {
+                root.rightChild = Insert(root.rightChild, input);
+            }
+            return root;
         }
-        public void SearchTree()
+        public void Add(int input)
         {
-
+            root = Insert(root, input);
         }
-
+        public void Search(int input)
+        {
+            if(input == root.data)
+            {
+                Console.WriteLine("Found search result: " + root.data);
+            }
+            else
+            {
+                Console.WriteLine("That input does not exist in this tree.");
+            }
+        }        
     }
 }
